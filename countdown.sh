@@ -3,8 +3,7 @@
 clear
 
 let resp=0
-echo "Time?(in seconds)"
-read resp
+read -p "Time?(in seconds)" resp
 
 clear
 
@@ -17,7 +16,7 @@ do
     echo 
     echo $num
     sleep 1
-    let num=$num-1 #can also be "num-=1"
+    let num-=1 
     clear
 
 done
