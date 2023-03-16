@@ -31,14 +31,13 @@ do
   echo ""
   echo "====================== Applications  ================"
   echo ""
-  echo "Enter p for pygmynote: "
   echo "Enter e for elinks browswer: "
   echo "Enter w for weechat: "
   echo "Enter cal for calcurse: "
   echo "Enter ht for htop: "
   echo "Enter mt for mutt email client:"
   echo "Enter sc for spreadsheet calculator: "
-  echo "Enter nb for newsbeuter rss feed reader: "
+  echo "Enter nb for newsboat rss feed reader: "
   echo ""
   echo "====================================================="
   echo ""
@@ -51,23 +50,27 @@ do
   
   case "$answer" in
     u) sudo apt update && sudo apt upgrade ;;
-    r) cd ~/Programming/Local/BASH/gCash && ./gnuCash_restore.sh; cd  ;; #gcrest
-    b) cd ~/Programming/Local/BASH/gCash && ./gnuCash_backup.sh; cd ;; #gcbak 
-    a) cd ~/Programming/Local/BASH/gCash && ./gnuCash_backup_adv.sh; cd ;; #gcbadv 
-    f) cd ~/Programming/Local/BASH/gCash && ./gnuCash_backup_fserver.sh; cd ;; #gcbfs 
-    c) cal ;;
     cl) sudo apt-get clean && sudo apt-get autoclean && sudo apt-get autoremove ;;
-    p) cd ~/Documents/Notes/pygmynote/;./pygmynote.py ;;
+    # must be in your ~/.local/bin/ directory and placed in $PATH variable
+    # -------------------------------------------------------------------- 
+    r) gnuCash_restore ;; #gcrest
+    b) gnuCash_backup ;; #gcbak 
+    a) gnuCash_backup_adv ;; #gcbadv 
+    f) gnuCash_backup_fserver ;; #gcbfs 
+    sgac) adv_countdown ;; #acount 
+    sgc) countdown cd ;; #countd
+    # --------------------------------------------------------------------
+    c) cal ;;
     e) elinks ;;
     w) weechat-curses ;;
     cal) calcurse ;;
-    sgac) cd ~/Programming/Local/BASH/Timers && ./adv_countdown.sh; cd ;; #acount 
-    sgc) cd ~/Programming/Local/BASH/Timers && ./countdown.sh; cd ;; #countd
     ht) htop ;;
     mt) mutt ;;
     sc) sc ;;
     nb) newsbeuter ;;
     q) exit ;;
+    *) echo "Unsupported Item $answer!" >&2
+        exit 1 ;;
   esac
   echo ""
   echo -e "Press Enter/Return to continue---> \c"
