@@ -12,6 +12,8 @@ read -p "Minutes? " mins
 read -p "Seconds? " secs
 
 clear
+echo "Counting down from: $hours hours $mins minutes $secs seconds"
+echo ""
 
 while [ $hours -ge 0 ]; do
     while [ $mins -ge 0 ]; do
