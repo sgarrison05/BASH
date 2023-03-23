@@ -28,7 +28,7 @@ else
            ;;
         "4") countdown
            ;;
-        "5")  adv_countdown
+        "5") adv_countdown
            ;;
         "6") calcurse
            ;;
