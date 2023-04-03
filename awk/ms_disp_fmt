@@ -1,0 +1,38 @@
+#!/usr/bin/awk -f
+
+# awk script to print missing dispositions in .csv file from cjis.
+
+BEGIN {
+    # Set the imput and field separator
+    FS="\",\""
+
+    # Add Field Headers
+    print "\n  SID\t","   DOA\t","    TRN\t","TRS\t"  \
+    ,"Child Name\t\t", "    Disposition" \
+    ,"\n========================================================================================"
+
+    # Zero the records counter
+    records=0
+
+}
+
+# Strip out header
+NR == 1 {next;}
+
+{if ($14 == "J" && $23 == "" \
+    || $23 == "REFER TO PROSECUTOR" \
+    || $23 == "PETITION / MOTION")
+    {
+        printf("%s %s %10s %9s %s %-11s %-16s %-2s %s\n", records + 1,$2,$3,$4,$5,$9,$10,$14,$23);
+        # Add record to counter
+        records++;
+    } 
+}
+
+END {
+    
+    # Print the results
+    print "=========================================================================================\n"
+    print "Printing " records " of " NR " records.\n"
+
+}
