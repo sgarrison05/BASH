@@ -67,7 +67,7 @@ do
     ht) htop ;;
     mt) mutt ;;
     sc) sc ;;
-    nb) newsbeuter ;;
+    nb) newsboat ;;
     q) exit ;;
     *) echo "Unsupported Item $answer!" >&2
         exit 1 ;;
